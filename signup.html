@@ -6,22 +6,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Хүргэгч бүртгүүлэх</h1>
+<header>Хүргэгч бүртгүүлэх</header>
 
-<div class="form">
+<div class="container form-container">
   <input type="text" id="phone" placeholder="Утас">
   <input type="text" id="desc" placeholder="Тайлбар">
   <input type="password" id="pin" placeholder="PIN">
-  <button id="registerBtn">Бүртгүүлэх</button>
+  <button id="registerBtn" class="btn submit">Бүртгүүлэх</button>
 </div>
 
-<a href="index.html">← Буцах</a>
+<a href="index.html" class="back-link">← Буцах</a>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
 import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD_2GnarpqIcFj6e6Qop5fxOljjbhuDOy0",
   authDomain: "huwsgulhurgelt.firebaseapp.com",
@@ -36,7 +35,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Register button
 document.getElementById('registerBtn').onclick = () => {
   const phone = document.getElementById('phone').value;
   const desc = document.getElementById('desc').value;
@@ -50,9 +48,7 @@ document.getElementById('registerBtn').onclick = () => {
     document.getElementById('phone').value='';
     document.getElementById('desc').value='';
     document.getElementById('pin').value='';
-  } else {
-    alert("Бүх талбарыг бөглөнө үү!");
-  }
+  } else alert("Бүх талбарыг бөглөнө үү!");
 };
 </script>
 </body>
