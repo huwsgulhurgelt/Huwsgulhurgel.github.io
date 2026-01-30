@@ -4,95 +4,58 @@
   <meta charset="UTF-8">
   <title>Хүргэгч бүртгүүлэх</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      padding: 20px;
-    }
-
-    .form-box {
-      background: white;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      border-radius: 8px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-    }
-
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    a {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #2196F3;
-    }
+    body { font-family: Arial; background:#f4f6f8; padding:20px; }
+    .form-box { background:#fff; padding:20px; max-width:400px; margin:auto; border-radius:8px; }
+    label { display:block; margin-top:15px; }
+    input, textarea { width:100%; padding:10px; margin-top:5px; }
+    button { margin-top:20px; width:100%; padding:12px; background:#2196F3; color:white; border:none; border-radius:6px; }
+    a { display:block; text-align:center; margin-top:20px; color:#2196F3; text-decoration:none; }
   </style>
 </head>
 <body>
 
-  <div class="form-box">
-    <h1>Хүргэгч бүртгүүлэх</h1>
+<div class="form-box">
+  <h1>Хүргэгч бүртгүүлэх</h1>
 
-    <label>Утасны дугаар</label>
-    <input type="text" id="phone" placeholder="9911XXXX">
+  <label>Утасны дугаар</label>
+  <input id="phone" placeholder="9911XXXX">
 
-    <label>Тайлбар</label>
-    <textarea id="desc" rows="4" placeholder="Хэдэн кг зөөх боломжтой, ямар өдөр боломжтой гэх мэт"></textarea>
+  <label>Тайлбар</label>
+  <textarea id="desc" rows="4"></textarea>
 
-    <button onclick="saveCarrier()">Бүртгүүлэх</button>
+  <label>Нууц PIN (дараа нь засах / устгахад)</label>
+  <input id="pin" type="password" placeholder="Жишээ: 1234">
 
-    <a href="index.html">← Буцах</a>
-  </div>
+  <button onclick="saveCarrier()">Бүртгүүлэх</button>
+  <a href="index.html">← Буцах</a>
+</div>
 
-  <script>
-    function saveCarrier() {
-      const phone = document.getElementById("phone").value;
-      const desc = document.getElementById("desc").value;
+<script>
+function saveCarrier() {
+  const phone = phone.value;
+  const desc = desc.value;
+  const pin = pin.value;
 
-      if (phone === "" || desc === "") {
-        alert("Бүх талбарыг бөглөнө үү");
-        return;
-      }
+  if (!phone || !desc || !pin) {
+    alert("Бүх талбарыг бөглөнө үү");
+    return;
+  }
 
-      const carrier = {
-        phone: phone,
-        desc: desc
-      };
+  const carrier = {
+    id: Date.now(),
+    phone,
+    desc,
+    pin
+  };
 
-      let carriers = JSON.parse(localStorage.getItem("carriers")) || [];
-      carriers.push(carrier);
-      localStorage.setItem("carriers", JSON.stringify(carriers));
+  const carriers = JSON.parse(localStorage.getItem("carriers")) || [];
+  carriers.push(carrier);
+  localStorage.setItem("carriers", JSON.stringify(carriers));
 
-      alert("Амжилттай бүртгэгдлээ!");
-      window.location.href = "carriers.html";
-    }
-  </script>
+  alert("Амжилттай бүртгэгдлээ! PIN-ээ мартуузай!");
+  location.href = "carriers.html";
+}
+</script>
 
 </body>
 </html>
