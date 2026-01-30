@@ -2,94 +2,62 @@
 <html lang="mn">
 <head>
   <meta charset="UTF-8">
-  <title>Parallax Demo</title>
+  <title>Huwsgul Hurgelt</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
-    section {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* BACKGROUND LAYER (FAR) */
-    .bg {
-      position: absolute;
-      width: 120%;
-      height: 120%;
-      background: url("https://picsum.photos/1200/800") center / cover no-repeat;
-      transform: translateY(0) scale(0.9);
-      filter: blur(4px);
-      z-index: 1;
-    }
-
-    /* MID LAYER */
-    .mid {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.2);
-      z-index: 2;
-    }
-
-    /* FOREGROUND (CLOSEST) */
-    .front {
-      position: relative;
-      z-index: 3;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 36px;
-    }
-
-    .front-box {
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 10px;
-    }
-
-    .spacer {
-      height: 100vh;
       background: #f4f6f8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+    button {
+      width: 200px;
+      padding: 15px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .user {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .carrier {
+      background: #2196F3;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-<section>
-  <div class="bg" data-speed="0.2"></div>
-  <div class="mid" data-speed="0.5"></div>
+<header>
+  <h2>Huwsgul Hurgelt</h2>
+</header>
 
-  <div class="front" data-speed="1">
-    <div class="front-box">
-      Closest object (normal speed)
-    </div>
-  </div>
-</section>
+<main>
+  <h1>Та хэн бэ?</h1>
 
-<div class="spacer">
-  Scroll Down ↓
-</div>
-
-<script>
-  window.addEventListener("scroll", () => {
-    document.querySelectorAll("[data-speed]").forEach(el => {
-      const speed = el.getAttribute("data-speed");
-      el.style.transform = `translateY(${window.scrollY * speed}px)`;
-    });
-  });
-</script>
+  <button class="user">Хэрэглэгч</button>
+  <button class="carrier">Хүргэгч</button>
+</main>
 
 </body>
 </html>
