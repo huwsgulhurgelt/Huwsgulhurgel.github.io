@@ -2,61 +2,94 @@
 <html lang="mn">
 <head>
   <meta charset="UTF-8">
-  <title>Хөвсгөл Хүргэлт</title>
+  <title>Parallax Demo</title>
+
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND LAYER (FAR) */
+    .bg {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: url("https://picsum.photos/1200/800") center / cover no-repeat;
+      transform: translateY(0) scale(0.9);
+      filter: blur(4px);
+      z-index: 1;
+    }
+
+    /* MID LAYER */
+    .mid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    /* FOREGROUND (CLOSEST) */
+    .front {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 36px;
+    }
+
+    .front-box {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .spacer {
+      height: 100vh;
       background: #f4f6f8;
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-    }
-
-    a button {
-      display: block;
-      width: 220px;
-      padding: 15px;
-      margin: 12px auto;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .user {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .carrier {
-      background-color: #2196F3;
-      color: white;
+      justify-content: center;
+      font-size: 30px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Та хэн бэ?</h1>
+<section>
+  <div class="bg" data-speed="0.2"></div>
+  <div class="mid" data-speed="0.5"></div>
 
-    <a href="carriers.html">
-      <button class="user">Хэрэглэгч</button>
-    </a>
-
-    <a href="signup.html">
-      <button class="carrier">Хүргэгч</button>
-    </a>
+  <div class="front" data-speed="1">
+    <div class="front-box">
+      Closest object (normal speed)
+    </div>
   </div>
+</section>
+
+<div class="spacer">
+  Scroll Down ↓
+</div>
+
+<script>
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll("[data-speed]").forEach(el => {
+      const speed = el.getAttribute("data-speed");
+      el.style.transform = `translateY(${window.scrollY * speed}px)`;
+    });
+  });
+</script>
 
 </body>
 </html>
