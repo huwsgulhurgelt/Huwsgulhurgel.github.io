@@ -1,8 +1,9 @@
-      color: whit<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
   <meta charset="UTF-8">
   <title>Хөвсгөл Хүргэлт</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,7 +11,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 200vh;
       margin: 0;
     }
 
@@ -19,28 +20,27 @@
     }
 
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 60px;
     }
 
-    a button {
+    .btn {
       display: block;
       width: 440px;
       padding: 30px;
       margin: 24px auto;
       font-size: 32px;
-      border: none;
       border-radius: 16px;
-      cursor: pointer;
+      text-decoration: none;   /* removes underline */
+      color: white;
+      font-weight: bold;
     }
 
     .user {
       background-color: #4CAF50;
-      color: white;
     }
 
     .carrier {
       background-color: #2196F3;
-      color: white;
     }
   </style>
 </head>
@@ -49,13 +49,8 @@
   <div class="container">
     <h1>Та хэн бэ?</h1>
 
-    <a href="carriers.html">
-      <button class="user">Хэрэглэгч</button>
-    </a>
-
-    <a href="signup.html">
-      <button class="carrier">Хүргэгч</button>
-    </a>
+    <a href="carriers.html" class="btn user">Хэрэглэгч</a>
+    <a href="signup.html" class="btn carrier">Хүргэгч</a>
   </div>
 
 </body>
